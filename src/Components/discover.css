@@ -27,11 +27,12 @@
     justify-content: center;
     align-items: center;
     padding: 0 65px;
+    text-align: center;
 }
 
 .ucard img{
-    width: 144px;
-    height: 128px;
+    width: 130px;
+    height: 115px;
 }
 
 .ucard h4{
@@ -60,3 +61,7 @@ color: #FFFFFF;
 background: linear-gradient(95.48deg, #2317FA -1.25%, #D529E4 97.48%);
 box-shadow: 6px 16px 31px 8px rgba(59, 88, 239, 0.15);
 }
+
+
+
+

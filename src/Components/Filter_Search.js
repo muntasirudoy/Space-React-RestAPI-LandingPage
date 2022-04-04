@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './filter-search.css'
-import { Nav,Navbar,Container,Form,Button,FormControl, Card, Row} from 'react-bootstrap'
+import { Nav,Navbar,Container,Form,Button,FormControl,Spinner, Row} from 'react-bootstrap'
 import Cards from './Cards'
-import t1 from "../Images/t1.png"
-import t2 from "../Images/t2.png"
-import t3 from "../Images/t3.png"
 import { BiDownArrowAlt } from 'react-icons/bi';
 
 
-const Filter_Search = () => {
+const Filter_Search = ({data,loading}) => {
+
+    const [searchData, setSearchData] = useState([])
+
+    useEffect(()=>{
+        setSearchData(data)
+    })
+
+   const handleSearch =(e)=>{
+    setSearchData('')
+    const text = e.target.value
+    const sear = data.filter(item=> item.rocket.rocket_name.includes(text))
+    setSearchData(sear)
+    console.log(sear)
+    }
+
+   const handleSelect =(e)=>{
+    setSearchData('')  
+    const yesno = e.target.value == "Yes" ? true : false  
+    const sear = data.filter(item=> item.upcoming == yesno)
+    setSearchData(sear)
+    console.log(sear)
+    console.log(yesno)
+   }
+
+
+
+   
   return (
     <div className='filter-search'>
          <Container>
@@ -17,7 +41,7 @@ const Filter_Search = () => {
                 <Navbar.Text>
                     Is upcomming?  
                 </Navbar.Text>
-                   <Form.Select size="sm"> 
+                   <Form.Select size="sm" onChange={handleSelect}> 
                          <option>Yes</option>
                          <option>No</option>
                     </Form.Select>
@@ -45,31 +69,48 @@ const Filter_Search = () => {
                         type="search"
                         placeholder="Search for rocet"
                         aria-label="Search"
+                        onChange={handleSearch}
                         />
                         <Button variant="outline-success">Search</Button>
                     </Form>
                     </Navbar.Collapse>
                 </Navbar>
              </div>
-
              <div className='rocet-cards'>
                     <Row>
-                        <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" img={t1} title="Mission Bongo" para=" that we can make Spr lorem ipsam ty robotics solutions."/>
-                        <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" img={t2} title="Mission BD" para="At at we can make Spaceg lorem ipsam robotics solutions."/>
-                        <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" img={t3} title="Mission 11" para="At at we can make Spaceg lorem ipsam robotics solutions."/>
-                        <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" img={t3} title="Mission 11" para="At at we can make Spaceg lorem ipsam robotics solutions."/>
-                        <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" img={t3} title="Mission 11" para="At at we can make Spaceg lorem ipsam robotics solutions."/>
-                        <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" img={t3} title="Mission 11" para="At at we can make Spaceg lorem ipsam robotics solutions."/>
-                        <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" img={t3} title="Mission 11" para="At at we can make Spaceg lorem ipsam robotics solutions."/>
-                        <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" img={t3} title="Mission 11" para="At at we can make Spaceg lorem ipsam robotics solutions."/>
+                            {loading? 
+                              <div className='spin'>
+                               <Spinner animation="grow" variant="light" />
+                               <span >Loading...</span>
+                              </div>
+                             :
+                           searchData.map(item=>(   
+                                <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" rcardb="35px" 
+                                    img={item.links.mission_patch_small} 
+                                    title={item.mission_name} 
+                                    rName={item.rocket.rocket_name} 
+                                    lYear={item.launch_year}
+                                    upcome={item.upcoming.toString()}
+                                /> 
+                               ))
+                            //     :
+                            // data.map(item=>(   
+                            //     <Cards rcard="25px" rcardh="394px" rcardm="25px" lg="3" md="4" sm="6" rcardb="35px" 
+                            //         img={item.links.mission_patch_small} 
+                            //         title={item.mission_name} 
+                            //         rName={item.rocket.rocket_name} 
+                            //         lYear={item.launch_year}
+                            //         upcome={item.upcoming.toString()}
+                            //     /> 
+                            //    ))
+  
+                            }
                     </Row>
              </div>
-
-
-
          </Container>
     </div>
   )
 }
 
 export default Filter_Search
+
