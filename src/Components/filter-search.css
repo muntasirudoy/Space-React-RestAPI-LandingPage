@@ -12,7 +12,7 @@
     color: #ABABAB!important;
 }
 .form-select{
-    width: 110px!important;
+    width: 50px!important;
     /* background: transparent!important; */
     background: transparent!important;
     color: #ABABAB!important;
@@ -70,4 +70,16 @@
   .btn-outline-success:focus{
     outline: 0!important;
     box-shadow: none!important;
+}
+svg{
+    margin-right: 50px!important;
+    margin-top: 3px;
+    color: #FFFFFF;
+    width: 16px!important;
+    height: 16px!important;
+}
+
+.fselect-year{
+    padding: 0!important;
+    width: 110px!important;
 }

@@ -127,15 +127,29 @@ ul li a:hover {
     
 }
 
+.footer .items .btn-outline-success:hover {
+    background: rgb(107,30,241);
+    background: linear-gradient(90deg, rgba(107,30,241,1) 0%, rgba(203,40,229,1) 100%)!important;
+    color: #ffffff;
+    box-shadow: 6px 16px 31px 8px #3B58EF26;
+  }
+
+
+
+
+
 .footer-bottom{
     margin-top: 140px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.footer-bottom .icons{
-    width: 151px;
-    height: 20px;
+
+.footer-bottom .icons svg{
+    width: 20px!important;
+    height: 20px!important;
+    cursor: pointer;
+    color: #5B5B5B;
 }
 .footer-bottom p{
 font-family: 'Inter';

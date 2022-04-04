@@ -2,7 +2,9 @@ import React from 'react'
 import { Container,Form, Button,FormControl } from 'react-bootstrap'
 import './layout.css'
 import headerLogo from '../Images/headerLogo.png'
-import icons from '../Images/icons.png'
+import { BsTwitter } from 'react-icons/bs';
+import { FaFacebookF,FaLinkedinIn } from 'react-icons/fa';
+
 const Footer = () => {
   return (
     <div className='footer'>
@@ -22,7 +24,11 @@ const Footer = () => {
                  <img src={headerLogo}/>
               </div>
               <p>Space 2020, All rights reserved.</p>
-              <img className='icons' src={icons}/>
+              <div className='icons'>
+              <BsTwitter/>
+              <FaFacebookF/>
+              <FaLinkedinIn/>
+              </div>
              </div>
       </Container>
 

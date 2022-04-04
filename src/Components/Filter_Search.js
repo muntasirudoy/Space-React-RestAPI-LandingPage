@@ -5,6 +5,7 @@ import Cards from './Cards'
 import t1 from "../Images/t1.png"
 import t2 from "../Images/t2.png"
 import t3 from "../Images/t3.png"
+import { BiDownArrowAlt } from 'react-icons/bi';
 
 
 const Filter_Search = () => {
@@ -14,21 +15,22 @@ const Filter_Search = () => {
              <div className='filter-search-tab'>
              <Navbar style={{background:"#2D2853",padding:"18px 25px"}} expand="lg">
                 <Navbar.Text>
-                    Is upcomming?   
+                    Is upcomming?  
                 </Navbar.Text>
-                   <Form.Select size="sm">
+                   <Form.Select size="sm"> 
                          <option>Yes</option>
                          <option>No</option>
                     </Form.Select>
+                    <BiDownArrowAlt className='ficon' />
                     <span className='bdr'></span>
                 <Navbar.Text>
-                    Launch year?   
+                    Launch year? 
                 </Navbar.Text>
-                   <Form.Select size="sm">
+                   <Form.Select size="lg" className='fselect-year' >
                          <option>2001-2005</option>
                          <option>2006-2010</option>
                     </Form.Select>
-
+                    <BiDownArrowAlt className='ficon' />
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                     <Nav
