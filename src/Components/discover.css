@@ -1,0 +1,62 @@
+
+.discover{
+    padding: 70px 0;
+    background: #18163B8C;
+}
+
+.discover h3{
+    display: block;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 60px;
+    color: #FFFFFF;
+}
+.ucard{
+    width: 100%;
+    height: 478px;
+    background: #231E44;
+    transition: 0.2s all;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 65px;
+}
+
+.ucard img{
+    width: 144px;
+    height: 128px;
+}
+
+.ucard h4{
+margin-top: 27px;    
+font-family: 'Russo One';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 36px;
+color: #FFFFFF;
+}
+
+
+.ucard p{
+    margin-top: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #DADADA;
+    }
+.ucard:hover{
+    transform: translateY(-5px);
+background: linear-gradient(95.48deg, #2317FA -1.25%, #D529E4 97.48%);
+box-shadow: 6px 16px 31px 8px rgba(59, 88, 239, 0.15);
+}
