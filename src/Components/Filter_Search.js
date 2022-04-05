@@ -7,28 +7,24 @@ import { BiDownArrowAlt } from 'react-icons/bi';
 
 const Filter_Search = ({data,loading}) => {
 
-    const [searchData, setSearchData] = useState([])
+    const dataArrry = [...data]
 
-    useEffect(()=>{
-        setSearchData(data)
-    })
+    const [searchData, setSearchData] = useState(dataArrry)
 
+ 
    const handleSearch =(e)=>{
-    setSearchData('')
     const text = e.target.value
     const sear = data.filter(item=> item.rocket.rocket_name.includes(text))
     setSearchData(sear)
-    console.log(sear)
     }
 
-   const handleSelect =(e)=>{
-    setSearchData('')  
+   const handleSelect =(e)=>{ 
     const yesno = e.target.value == "Yes" ? true : false  
     const sear = data.filter(item=> item.upcoming == yesno)
     setSearchData(sear)
-    console.log(sear)
     console.log(yesno)
    }
+
 
 
 
