@@ -10,9 +10,9 @@ import launchYear from './launchYears';
 
 const Filter_Search = () => {
     
-   const [loading, setLoading] =useState(false) // for loading component
-   const [searchData, setSearchData] = useState([]) // search items
-   const [allData, setAllData] = useState('') //all items before search
+   const [loading, setLoading] =useState(false)
+   const [searchData, setSearchData] = useState([]) 
+   const [allData, setAllData] = useState('') 
    const [currentItems, setCurrentItems] = useState([]);
    const [pageCount, setPageCount] = useState(0);
    const [itemOffset, setItemOffset] = useState(0);
@@ -28,9 +28,7 @@ const Filter_Search = () => {
           const endOffset = itemOffset + itemsPerPage;
           setCurrentItems(data.slice(itemOffset, endOffset));
           setPageCount(Math.ceil(data.length / itemsPerPage));
-        
           setLoading(false)
-          
         }
         catch(err){
           console.log(err)
@@ -176,7 +174,6 @@ const Filter_Search = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                       
                     </Nav>
                     <Form className="d-flex">
                         <FormControl
