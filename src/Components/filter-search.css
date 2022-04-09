@@ -18,12 +18,13 @@
     color: #ABABAB!important;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 600!important;
+    font-weight: 300!important;
     font-size: 18px!important;
     cursor: pointer;
    border: none!important;
     padding-right: 0!important;
     margin-left: 5px!important;
+    text-align: center!important;
 
 }
 .form-select option{
@@ -81,7 +82,8 @@ svg{
 
 .fselect-year{
     padding: 0!important;
-    width: 110px!important;
+    width: 136px!important;
+    text-align: center!important;
 }
 
 
@@ -111,6 +113,15 @@ flex-direction: column;
     color: #FFFFFF;
     font-family: 'Inter';
       font-style: normal;
-      font-weight: 500;
+      font-weight: 300;
       margin-top: 10px;
+}
+
+.nothing{
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    color: #DADADA;
+    align-items: center;
+    height: 200px;
 }
