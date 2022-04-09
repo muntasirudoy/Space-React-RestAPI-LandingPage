@@ -28,6 +28,7 @@
     align-items: center;
     padding: 0 65px;
     text-align: center;
+    transition: 0.4s;
 }
 
 .ucard img{

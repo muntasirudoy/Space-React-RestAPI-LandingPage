@@ -125,3 +125,21 @@ flex-direction: column;
     align-items: center;
     height: 200px;
 }
+.pagination{
+    width: 50%;
+    margin: 50px auto 0;
+}
+
+
+.pagination li{
+    padding: 10px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+}
+
+.pagination svg{
+    margin-right: 0!important;
+    width: 30px!important;
+    height: 30px!important;
+}

@@ -18,8 +18,8 @@ padding: 142px 0;
 .astro{
     position: absolute;
     right: 0;
-    width: 830px;
-    height: 803px;
+    width: 780px;
+    height: 750px;
 }
 .text{
     width: 467px;
@@ -30,8 +30,8 @@ padding: 142px 0;
 font-family: 'Russo One';
 font-style: normal;
 font-weight: 400;
-font-size: 82.6667px;
-line-height: 85px;
+font-size: 72.6667px;
+line-height: 75px;
 color: #FFFFFF;
 margin-top:30px;
 }
@@ -47,8 +47,8 @@ margin-top:30px;
 
 .banner-btn{
     margin-left: 0!important;
-    width: 253px!important;
-    height: 77px;
+    width: 220px!important;
+    height: 66px;
     display: flex!important;
     justify-content: center;
     align-items: center;
