@@ -4,30 +4,26 @@ import { Nav,Navbar,Container,Form,Button,FormControl,Spinner, Row} from 'react-
 import Cards from './Cards'
 import { BiDownArrowAlt} from 'react-icons/bi';
 import { CgPlayTrackNextR,CgPlayTrackPrevR } from 'react-icons/cg';
-import axios from 'axios';
 import ReactPaginate from 'react-paginate';
-import launchYear from './launchYears';
+import { useSelector } from 'react-redux';
+
 
 const Filter_Search = () => {
-    
-   const [loading, setLoading] =useState(false)
-   const [searchData, setSearchData] = useState([]) 
-   const [allData, setAllData] = useState('') 
-   const [currentItems, setCurrentItems] = useState([]);
-   const [pageCount, setPageCount] = useState(0);
-   const [itemOffset, setItemOffset] = useState(0);
 
+  const {dataInfo} = useSelector((state=>state.data)) //fetch data from redux store
+   const [loading, setLoading] =useState(false) // loader
+   const [currentItems, setCurrentItems] = useState([]); //pagination data
+   const [pageCount, setPageCount] = useState(0); //pagination page count
+   const [itemOffset, setItemOffset] = useState(0);
    const itemsPerPage = 8
 
   useEffect(async()=>{
     setLoading(true)
           // Fetch items 
         try{ 
-          let {data} = await axios.get('https://api.spacexdata.com/v3/launches')
-          setAllData(data)
           const endOffset = itemOffset + itemsPerPage;
-          setCurrentItems(data.slice(itemOffset, endOffset));
-          setPageCount(Math.ceil(data.length / itemsPerPage));
+          setCurrentItems(dataInfo.slice(itemOffset, endOffset));
+          setPageCount(Math.ceil(dataInfo.length / itemsPerPage));
           setLoading(false)
         }
         catch(err){
@@ -36,9 +32,8 @@ const Filter_Search = () => {
       
   },[itemOffset, itemsPerPage])
   
-
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % allData.length;
+    const newOffset = (event.selected * itemsPerPage) % dataInfo.length;
     setItemOffset(newOffset);
   }
 
@@ -48,11 +43,11 @@ const Filter_Search = () => {
     const text = e.target.value
       if (text.value == ""){
         const endOffset =  itemOffset + itemsPerPage;
-        setCurrentItems(allData.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(allData.length / itemsPerPage));
+        setCurrentItems(dataInfo.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(dataInfo.length / itemsPerPage));
       }
       else{
-        const sear = allData.filter(item=> item.rocket.rocket_name.toLowerCase().includes(text))
+        const sear = dataInfo.filter(item=> item.rocket.rocket_name.toLowerCase().includes(text))
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(sear.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(sear.length / itemsPerPage));
@@ -65,14 +60,14 @@ const Filter_Search = () => {
     console.log(yesno)
   
      if(yesno){
-        const sear = allData.filter(item=> item.upcoming == yesno)
+        const sear = dataInfo.filter(item=> item.upcoming == yesno)
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(sear.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(sear.length / itemsPerPage));
      }
 
      else{
-      const sear = allData.filter(item=> item.upcoming == false)
+      const sear = dataInfo.filter(item=> item.upcoming == false)
       const endOffset =  itemOffset + itemsPerPage;
       setCurrentItems(sear.slice(itemOffset, endOffset));
       setPageCount(Math.ceil(sear.length / itemsPerPage));
@@ -83,49 +78,49 @@ const Filter_Search = () => {
 
     let year = e.target.value 
     if(year == "Less than 1990"){
-        const search = allData.filter(item=> item.launch_year <= "1990")
+        const search = dataInfo.filter(item=> item.launch_year <= "1990")
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(search.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(search.length / itemsPerPage));
     }
    else if(year == "1991-1995"){
-        const search = allData.filter(item=> item.launch_year >= "1991" && item.launch_year <= "1995")
+        const search = dataInfo.filter(item=> item.launch_year >= "1991" && item.launch_year <= "1995")
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(search.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(search.length / itemsPerPage));
     }
    else if(year == "1995-2000"){
-        const search = allData.filter(item=> item.launch_year >= "1996" && item.launch_year <= "2000")
+        const search = dataInfo.filter(item=> item.launch_year >= "1996" && item.launch_year <= "2000")
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(search.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(search.length / itemsPerPage));
     }
    else if(year == "2001-2005"){
-        const search = allData.filter(item=> item.launch_year >= "2001" && item.launch_year <= "2005")
+        const search = dataInfo.filter(item=> item.launch_year >= "2001" && item.launch_year <= "2005")
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(search.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(search.length / itemsPerPage));
     }
    else if(year == "2006-2010"){
-        const search = allData.filter(item=> item.launch_year >= "2006" && item.launch_year <= "2010")
+        const search = dataInfo.filter(item=> item.launch_year >= "2006" && item.launch_year <= "2010")
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(search.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(search.length / itemsPerPage));
     }
    else if(year == "2011-2015"){
-        const search = allData.filter(item=> item.launch_year >= "2011" && item.launch_year <= "2015")
+        const search = dataInfo.filter(item=> item.launch_year >= "2011" && item.launch_year <= "2015")
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(search.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(search.length / itemsPerPage));
     }
    else if(year == "2016-2020"){
-        const search = allData.filter(item=> item.launch_year >= "2015" && item.launch_year <= "2020")
+        const search = dataInfo.filter(item=> item.launch_year >= "2015" && item.launch_year <= "2020")
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(search.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(search.length / itemsPerPage));
     }
     else if(year == "Above 2020"){
-        const search = allData.filter(item=> item.launch_year >"2020")
+        const search = dataInfo.filter(item=> item.launch_year >"2020")
         const endOffset =  itemOffset + itemsPerPage;
         setCurrentItems(search.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(search.length / itemsPerPage));
@@ -191,7 +186,6 @@ const Filter_Search = () => {
 
             {/* cards/filter result start  */}
              <div className='rocet-cards'>
-                 {console.log(searchData)}
                     <Row>
                             {loading? 
                               <div className='spin'>
